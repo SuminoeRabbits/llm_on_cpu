@@ -1,0 +1,280 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "architecture": {
+      "const": "x86_64"
+    },
+    "archive_sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "archive_url": {
+      "format": "uri",
+      "type": "string"
+    },
+    "base_image": {
+      "pattern": "^ubuntu@sha256:[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "framework_version": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "measurement": {
+      "additionalProperties": false,
+      "properties": {
+        "concurrency": {
+          "const": 1
+        },
+        "mode": {
+          "const": "fresh_request_preloaded"
+        },
+        "num_batch": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "num_ctx": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "num_predict": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "prompt": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "repetitions": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "seed": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "temperature": {
+          "const": 0
+        },
+        "think": {
+          "enum": [
+            false,
+            true,
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "timeout_seconds": {
+          "const": 3600
+        },
+        "warmup_requests": {
+          "const": 0
+        }
+      },
+      "required": [
+        "mode",
+        "repetitions",
+        "concurrency",
+        "warmup_requests",
+        "timeout_seconds",
+        "seed",
+        "num_ctx",
+        "num_predict",
+        "temperature",
+        "num_batch",
+        "think",
+        "prompt"
+      ],
+      "type": "object"
+    },
+    "minimum_available_memory_bytes": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "model": {
+      "type": "string"
+    },
+    "model_config": {
+      "additionalProperties": false,
+      "properties": {
+        "architecture": {
+          "type": "string"
+        },
+        "file_type": {
+          "type": "string"
+        },
+        "model_families": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "model_family": {
+          "type": "string"
+        },
+        "model_format": {
+          "type": "string"
+        },
+        "model_type": {
+          "type": "string"
+        },
+        "os": {
+          "type": "string"
+        },
+        "requires": {
+          "type": "string"
+        },
+        "rootfs": {
+          "additionalProperties": false,
+          "properties": {
+            "diff_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "diff_ids"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "model_format",
+        "model_family",
+        "model_families",
+        "model_type",
+        "file_type"
+      ],
+      "type": "object"
+    },
+    "model_manifest": {
+      "additionalProperties": false,
+      "properties": {
+        "config": {
+          "additionalProperties": false,
+          "properties": {
+            "digest": {
+              "pattern": "^sha256:[a-f0-9]{64}$",
+              "type": "string"
+            },
+            "from": {
+              "type": "string"
+            },
+            "mediaType": {
+              "type": "string"
+            },
+            "size": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "mediaType",
+            "digest",
+            "size"
+          ],
+          "type": "object"
+        },
+        "format": {
+          "type": "string"
+        },
+        "layers": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "digest": {
+                "pattern": "^sha256:[a-f0-9]{64}$",
+                "type": "string"
+              },
+              "from": {
+                "type": "string"
+              },
+              "mediaType": {
+                "type": "string"
+              },
+              "size": {
+                "minimum": 0,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "mediaType",
+              "digest",
+              "size"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "mediaType": {
+          "type": "string"
+        },
+        "runner": {
+          "type": "string"
+        },
+        "schemaVersion": {
+          "const": 2
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "mediaType",
+        "config",
+        "layers"
+      ],
+      "type": "object"
+    },
+    "model_manifest_sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "model_manifest_url": {
+      "format": "uri",
+      "type": "string"
+    },
+    "perf_events": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "purpose": {
+      "const": "experimental_smoke"
+    },
+    "release_source": {
+      "format": "uri",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "purpose",
+    "framework_version",
+    "release_source",
+    "base_image",
+    "architecture",
+    "archive_url",
+    "archive_sha256",
+    "model",
+    "model_manifest_sha256",
+    "model_manifest_url",
+    "model_manifest",
+    "model_config",
+    "measurement",
+    "perf_events",
+    "minimum_available_memory_bytes"
+  ],
+  "type": "object"
+}

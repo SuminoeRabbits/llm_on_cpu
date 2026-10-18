@@ -1,0 +1,880 @@
+{
+  "$id": "urn:llm-on-cpu:runner:1.0.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "oneOf": [
+    {
+      "additionalProperties": false,
+      "properties": {
+        "adapter": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "anyOf": [
+                {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "version": {
+              "anyOf": [
+                {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "version"
+          ],
+          "type": "object"
+        },
+        "contract": {
+          "const": "runner/v1"
+        },
+        "identity": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "anyOf": [
+                {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "purpose": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "smoke",
+                    "benchmark"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "purpose"
+          ],
+          "type": "object"
+        },
+        "kind": {
+          "const": "template"
+        },
+        "measurement": {
+          "additionalProperties": false,
+          "properties": {
+            "concurrency": {
+              "const": 1
+            },
+            "perf_events": {
+              "anyOf": [
+                {
+                  "items": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "minItems": 1,
+                  "type": "array",
+                  "uniqueItems": true
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "protocol": {
+              "const": "fresh_request_preloaded/v1"
+            },
+            "repetitions": {
+              "anyOf": [
+                {
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "warmup_requests": {
+              "const": 0
+            }
+          },
+          "required": [
+            "protocol",
+            "repetitions",
+            "concurrency",
+            "warmup_requests",
+            "perf_events"
+          ],
+          "type": "object"
+        },
+        "model": {
+          "additionalProperties": false,
+          "properties": {
+            "blobs": {
+              "anyOf": [
+                {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "digest": {
+                        "pattern": "^sha256:[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "size_bytes": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "url": {
+                        "format": "uri",
+                        "pattern": "^https://",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "digest",
+                      "size_bytes",
+                      "url"
+                    ],
+                    "type": "object"
+                  },
+                  "minItems": 1,
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "id": {
+              "anyOf": [
+                {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "manifest": {
+              "anyOf": [
+                {
+                  "additionalProperties": false,
+                  "properties": {
+                    "config": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "digest": {
+                          "pattern": "^sha256:[a-f0-9]{64}$",
+                          "type": "string"
+                        },
+                        "from": {
+                          "type": "string"
+                        },
+                        "mediaType": {
+                          "type": "string"
+                        },
+                        "size": {
+                          "minimum": 0,
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "mediaType",
+                        "digest",
+                        "size"
+                      ],
+                      "type": "object"
+                    },
+                    "format": {
+                      "type": "string"
+                    },
+                    "layers": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "digest": {
+                            "pattern": "^sha256:[a-f0-9]{64}$",
+                            "type": "string"
+                          },
+                          "from": {
+                            "type": "string"
+                          },
+                          "mediaType": {
+                            "type": "string"
+                          },
+                          "size": {
+                            "minimum": 0,
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "mediaType",
+                          "digest",
+                          "size"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "mediaType": {
+                      "type": "string"
+                    },
+                    "runner": {
+                      "type": "string"
+                    },
+                    "schemaVersion": {
+                      "const": 2
+                    }
+                  },
+                  "required": [
+                    "schemaVersion",
+                    "mediaType",
+                    "config",
+                    "layers"
+                  ],
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "manifest_sha256": {
+              "anyOf": [
+                {
+                  "pattern": "^[a-f0-9]{64}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "manifest_url": {
+              "anyOf": [
+                {
+                  "format": "uri",
+                  "pattern": "^https://",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "quantization": {
+              "anyOf": [
+                {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "manifest_url",
+            "manifest_sha256",
+            "manifest",
+            "blobs",
+            "quantization"
+          ],
+          "type": "object"
+        },
+        "resources": {
+          "additionalProperties": false,
+          "properties": {
+            "minimum_available_memory_bytes": {
+              "anyOf": [
+                {
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "minimum_available_memory_bytes"
+          ],
+          "type": "object"
+        },
+        "runner_schema_version": {
+          "const": "1.0.0"
+        },
+        "runtime": {
+          "additionalProperties": false,
+          "properties": {
+            "architecture": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "x86_64",
+                    "arm64"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "archive_sha256": {
+              "anyOf": [
+                {
+                  "pattern": "^[a-f0-9]{64}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "archive_url": {
+              "anyOf": [
+                {
+                  "format": "uri",
+                  "pattern": "^https://",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "base_image": {
+              "anyOf": [
+                {
+                  "pattern": "^ubuntu@sha256:[a-f0-9]{64}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "architecture",
+            "base_image",
+            "archive_url",
+            "archive_sha256"
+          ],
+          "type": "object"
+        },
+        "timeouts": {
+          "additionalProperties": false,
+          "properties": {
+            "cleanup_seconds": {
+              "const": 60
+            },
+            "preparation_seconds": {
+              "const": 3600
+            },
+            "repetition_seconds": {
+              "const": 3600
+            }
+          },
+          "required": [
+            "preparation_seconds",
+            "repetition_seconds",
+            "cleanup_seconds"
+          ],
+          "type": "object"
+        },
+        "workload": {
+          "additionalProperties": false,
+          "properties": {
+            "batch_size": {
+              "anyOf": [
+                {
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "context_length": {
+              "anyOf": [
+                {
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "max_output_tokens": {
+              "anyOf": [
+                {
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "prompt": {
+              "anyOf": [
+                {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "seed": {
+              "anyOf": [
+                {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "temperature": {
+              "anyOf": [
+                {
+                  "minimum": 0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "think": {
+              "anyOf": [
+                {
+                  "enum": [
+                    false,
+                    true,
+                    "low",
+                    "medium",
+                    "high"
+                  ],
+                  "type": [
+                    "boolean",
+                    "string"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "prompt",
+            "context_length",
+            "max_output_tokens",
+            "seed",
+            "temperature",
+            "batch_size",
+            "think"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "runner_schema_version",
+        "contract",
+        "kind",
+        "identity",
+        "adapter",
+        "runtime",
+        "model",
+        "workload",
+        "measurement",
+        "resources",
+        "timeouts"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "adapter": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "version": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "version"
+          ],
+          "type": "object"
+        },
+        "contract": {
+          "const": "runner/v1"
+        },
+        "identity": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "purpose": {
+              "enum": [
+                "smoke",
+                "benchmark"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "purpose"
+          ],
+          "type": "object"
+        },
+        "kind": {
+          "const": "instance"
+        },
+        "measurement": {
+          "additionalProperties": false,
+          "properties": {
+            "concurrency": {
+              "const": 1
+            },
+            "perf_events": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "minItems": 1,
+              "type": "array",
+              "uniqueItems": true
+            },
+            "protocol": {
+              "const": "fresh_request_preloaded/v1"
+            },
+            "repetitions": {
+              "minimum": 1,
+              "type": "integer"
+            },
+            "warmup_requests": {
+              "const": 0
+            }
+          },
+          "required": [
+            "protocol",
+            "repetitions",
+            "concurrency",
+            "warmup_requests",
+            "perf_events"
+          ],
+          "type": "object"
+        },
+        "model": {
+          "additionalProperties": false,
+          "properties": {
+            "blobs": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "digest": {
+                    "pattern": "^sha256:[a-f0-9]{64}$",
+                    "type": "string"
+                  },
+                  "size_bytes": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "url": {
+                    "format": "uri",
+                    "pattern": "^https://",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "digest",
+                  "size_bytes",
+                  "url"
+                ],
+                "type": "object"
+              },
+              "minItems": 1,
+              "type": "array"
+            },
+            "id": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "manifest": {
+              "additionalProperties": false,
+              "properties": {
+                "config": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "digest": {
+                      "pattern": "^sha256:[a-f0-9]{64}$",
+                      "type": "string"
+                    },
+                    "from": {
+                      "type": "string"
+                    },
+                    "mediaType": {
+                      "type": "string"
+                    },
+                    "size": {
+                      "minimum": 0,
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "mediaType",
+                    "digest",
+                    "size"
+                  ],
+                  "type": "object"
+                },
+                "format": {
+                  "type": "string"
+                },
+                "layers": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "digest": {
+                        "pattern": "^sha256:[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "from": {
+                        "type": "string"
+                      },
+                      "mediaType": {
+                        "type": "string"
+                      },
+                      "size": {
+                        "minimum": 0,
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "mediaType",
+                      "digest",
+                      "size"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "mediaType": {
+                  "type": "string"
+                },
+                "runner": {
+                  "type": "string"
+                },
+                "schemaVersion": {
+                  "const": 2
+                }
+              },
+              "required": [
+                "schemaVersion",
+                "mediaType",
+                "config",
+                "layers"
+              ],
+              "type": "object"
+            },
+            "manifest_sha256": {
+              "pattern": "^[a-f0-9]{64}$",
+              "type": "string"
+            },
+            "manifest_url": {
+              "format": "uri",
+              "pattern": "^https://",
+              "type": "string"
+            },
+            "quantization": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "manifest_url",
+            "manifest_sha256",
+            "manifest",
+            "blobs",
+            "quantization"
+          ],
+          "type": "object"
+        },
+        "resources": {
+          "additionalProperties": false,
+          "properties": {
+            "minimum_available_memory_bytes": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "minimum_available_memory_bytes"
+          ],
+          "type": "object"
+        },
+        "runner_schema_version": {
+          "const": "1.0.0"
+        },
+        "runtime": {
+          "additionalProperties": false,
+          "properties": {
+            "architecture": {
+              "enum": [
+                "x86_64",
+                "arm64"
+              ]
+            },
+            "archive_sha256": {
+              "pattern": "^[a-f0-9]{64}$",
+              "type": "string"
+            },
+            "archive_url": {
+              "format": "uri",
+              "pattern": "^https://",
+              "type": "string"
+            },
+            "base_image": {
+              "pattern": "^ubuntu@sha256:[a-f0-9]{64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "architecture",
+            "base_image",
+            "archive_url",
+            "archive_sha256"
+          ],
+          "type": "object"
+        },
+        "timeouts": {
+          "additionalProperties": false,
+          "properties": {
+            "cleanup_seconds": {
+              "const": 60
+            },
+            "preparation_seconds": {
+              "const": 3600
+            },
+            "repetition_seconds": {
+              "const": 3600
+            }
+          },
+          "required": [
+            "preparation_seconds",
+            "repetition_seconds",
+            "cleanup_seconds"
+          ],
+          "type": "object"
+        },
+        "workload": {
+          "additionalProperties": false,
+          "properties": {
+            "batch_size": {
+              "minimum": 1,
+              "type": "integer"
+            },
+            "context_length": {
+              "minimum": 1,
+              "type": "integer"
+            },
+            "max_output_tokens": {
+              "minimum": 1,
+              "type": "integer"
+            },
+            "prompt": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "seed": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "temperature": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "think": {
+              "enum": [
+                false,
+                true,
+                "low",
+                "medium",
+                "high"
+              ],
+              "type": [
+                "boolean",
+                "string"
+              ]
+            }
+          },
+          "required": [
+            "prompt",
+            "context_length",
+            "max_output_tokens",
+            "seed",
+            "temperature",
+            "batch_size",
+            "think"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "runner_schema_version",
+        "contract",
+        "kind",
+        "identity",
+        "adapter",
+        "runtime",
+        "model",
+        "workload",
+        "measurement",
+        "resources",
+        "timeouts"
+      ],
+      "type": "object"
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "runner_schema_version": "1.1.0",
+  "contract": "runner/v1",
+  "kind": "instance",
+  "identity": {
+    "id": "ollama-qwen3-30b-a3b",
+    "purpose": "smoke"
+  },
+  "adapter": {
+    "id": "ollama",
+    "version": "0.40.5"
+  },
+  "runtime": {
+    "architecture": "x86_64",
+    "base_image": "ubuntu@sha256:678c6550cc43645e08669028bc177f50be4e7c5b8cca677067b1914d4afc7a03",
+    "archive_url": "https://github.com/ollama/ollama/releases/download/v0.40.5/ollama-linux-amd64.tar.zst",
+    "archive_sha256": "dc5eabc292f9949546c90a97c820f924b035e05243b0de13c7f366182562169c"
+  },
+  "model": {
+    "id": "qwen3:30b-a3b",
+    "manifest_url": "https://registry.ollama.ai/v2/library/qwen3/manifests/30b-a3b",
+    "manifest_sha256": "ad815644918f0eaab341c12b67837cc6dd4562342cdaf118f83d5d554cb37226",
+    "manifest": {
+      "config": {
+        "digest": "sha256:3cdc64c2b371af88ae18b4cdac63d1097f76a8f6fd23d785aaaaa02c59450d61",
+        "mediaType": "application/vnd.docker.container.image.v1+json",
+        "size": 494
+      },
+      "layers": [
+        {
+          "digest": "sha256:58574f2e94b99fb9e4391408b57e5aeaaaec10f6384e9a699fc2cb43a5c8eabf",
+          "mediaType": "application/vnd.ollama.image.model",
+          "size": 18556685856
+        },
+        {
+          "digest": "sha256:2d54db2b9bb29ce7db54fea63a891f5859603813c555b1f88b5e0994652897f9",
+          "mediaType": "application/vnd.ollama.image.template",
+          "size": 1506
+        },
+        {
+          "digest": "sha256:d18a5cc71b84bc4af394a31116bd3932b42241de70c77d2b76d69a314ec8aa12",
+          "mediaType": "application/vnd.ollama.image.license",
+          "size": 11338
+        },
+        {
+          "digest": "sha256:cff3f395ef3756ab63e58b0ad1b32bb6f802905cae1472e6a12034e4246fbbdb",
+          "mediaType": "application/vnd.ollama.image.params",
+          "size": 120
+        }
+      ],
+      "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+      "schemaVersion": 2
+    },
+    "quantization": "Q4_K_M",
+    "blobs": [
+      {
+        "digest": "sha256:3cdc64c2b371af88ae18b4cdac63d1097f76a8f6fd23d785aaaaa02c59450d61",
+        "size_bytes": 494,
+        "url": "https://registry.ollama.ai/v2/library/qwen3/blobs/sha256:3cdc64c2b371af88ae18b4cdac63d1097f76a8f6fd23d785aaaaa02c59450d61"
+      },
+      {
+        "digest": "sha256:58574f2e94b99fb9e4391408b57e5aeaaaec10f6384e9a699fc2cb43a5c8eabf",
+        "size_bytes": 18556685856,
+        "url": "https://registry.ollama.ai/v2/library/qwen3/blobs/sha256:58574f2e94b99fb9e4391408b57e5aeaaaec10f6384e9a699fc2cb43a5c8eabf"
+      },
+      {
+        "digest": "sha256:2d54db2b9bb29ce7db54fea63a891f5859603813c555b1f88b5e0994652897f9",
+        "size_bytes": 1506,
+        "url": "https://registry.ollama.ai/v2/library/qwen3/blobs/sha256:2d54db2b9bb29ce7db54fea63a891f5859603813c555b1f88b5e0994652897f9"
+      },
+      {
+        "digest": "sha256:d18a5cc71b84bc4af394a31116bd3932b42241de70c77d2b76d69a314ec8aa12",
+        "size_bytes": 11338,
+        "url": "https://registry.ollama.ai/v2/library/qwen3/blobs/sha256:d18a5cc71b84bc4af394a31116bd3932b42241de70c77d2b76d69a314ec8aa12"
+      },
+      {
+        "digest": "sha256:cff3f395ef3756ab63e58b0ad1b32bb6f802905cae1472e6a12034e4246fbbdb",
+        "size_bytes": 120,
+        "url": "https://registry.ollama.ai/v2/library/qwen3/blobs/sha256:cff3f395ef3756ab63e58b0ad1b32bb6f802905cae1472e6a12034e4246fbbdb"
+      }
+    ]
+  },
+  "workload": {
+    "prompt": "Explain how a CPU executes a program. Describe instruction fetching, decoding, execution, registers, and memory access in clear English. Write a detailed explanation of approximately 200 words.",
+    "context_length": 2048,
+    "max_output_tokens": 128,
+    "seed": 42,
+    "temperature": 0,
+    "batch_size": 128,
+    "think": false
+  },
+  "measurement": {
+    "protocol": "fresh_request_preloaded/v1",
+    "repetitions": 1,
+    "concurrency": 1,
+    "warmup_requests": 0,
+    "perf_events": [
+      "cpu-clock",
+      "context-switches",
+      "cpu-migrations",
+      "page-faults",
+      "cycles",
+      "instructions",
+      "branches",
+      "branch-misses",
+      "cache-references",
+      "cache-misses"
+    ]
+  },
+  "resources": {
+    "minimum_available_memory_bytes": 23622320128
+  },
+  "timeouts": {
+    "preparation_seconds": 3600,
+    "repetition_seconds": 3600,
+    "cleanup_seconds": 60
+  }
+}

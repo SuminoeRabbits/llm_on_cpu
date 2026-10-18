@@ -1,0 +1,52 @@
+{
+  "adapter": {
+    "id": null,
+    "version": null
+  },
+  "contract": "runner/v1",
+  "identity": {
+    "id": null,
+    "purpose": null
+  },
+  "kind": "template",
+  "measurement": {
+    "concurrency": 1,
+    "perf_events": null,
+    "protocol": "fresh_request_preloaded/v1",
+    "repetitions": null,
+    "warmup_requests": 0
+  },
+  "model": {
+    "blobs": null,
+    "id": null,
+    "manifest": null,
+    "manifest_sha256": null,
+    "manifest_url": null,
+    "quantization": null
+  },
+  "resources": {
+    "minimum_available_memory_bytes": null
+  },
+  "runner_schema_version": "1.1.0",
+  "runtime": {
+    "architecture": null,
+    "archive_sha256": null,
+    "archive_url": null,
+    "base_image": null
+  },
+  "timeouts": {
+    "cleanup_seconds": 60,
+    "preparation_seconds": 3600,
+    "repetition_seconds": 3600
+  },
+  "workload": {
+    "batch_size": null,
+    "context_length": null,
+    "max_output_tokens": null,
+    "prompt": null,
+    "seed": null,
+    "temperature": null,
+    "think": null,
+    "template_date": null
+  }
+}

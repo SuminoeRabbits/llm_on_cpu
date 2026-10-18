@@ -1,0 +1,125 @@
+{
+  "runner_schema_version": "1.1.0",
+  "contract": "runner/v1",
+  "kind": "instance",
+  "identity": {
+    "id": "ollama-gpt-oss-20b",
+    "purpose": "smoke"
+  },
+  "adapter": {
+    "id": "ollama",
+    "version": "0.40.5"
+  },
+  "runtime": {
+    "architecture": "x86_64",
+    "base_image": "ubuntu@sha256:678c6550cc43645e08669028bc177f50be4e7c5b8cca677067b1914d4afc7a03",
+    "archive_url": "https://github.com/ollama/ollama/releases/download/v0.40.5/ollama-linux-amd64.tar.zst",
+    "archive_sha256": "dc5eabc292f9949546c90a97c820f924b035e05243b0de13c7f366182562169c"
+  },
+  "model": {
+    "id": "gpt-oss:20b",
+    "manifest_url": "https://registry.ollama.ai/v2/library/gpt-oss/manifests/20b",
+    "manifest_sha256": "f38aa0c53da5f8c49d08c43a99df24ff53167fe68e24664a7777288e7656fdfe",
+    "manifest": {
+      "config": {
+        "digest": "sha256:e103573196b6deeff79ec124b4131b4fad700cee60b584a8f9d689ffed115038",
+        "mediaType": "application/vnd.docker.container.image.v1+json",
+        "size": 139
+      },
+      "format": "gguf",
+      "layers": [
+        {
+          "digest": "sha256:8ecb5d4ad6172c63f9cbf1a07a04e525985a8a11a6e516da02b674c4010de716",
+          "from": "dhiltgen/gpt-oss:20b-llamacpp",
+          "mediaType": "application/vnd.ollama.image.model",
+          "size": 13793422816
+        },
+        {
+          "digest": "sha256:fa6710a93d78da62641e192361344be7a8c0a1c3737f139cf89f20ce1626b99c",
+          "from": "dhiltgen/gpt-oss:20b-llamacpp",
+          "mediaType": "application/vnd.ollama.image.template",
+          "size": 7240
+        },
+        {
+          "digest": "sha256:f60356777647e927149cbd4c0ec1314a90caba9400ad205ddc4ce47ed001c2d6",
+          "from": "dhiltgen/gpt-oss:20b-llamacpp",
+          "mediaType": "application/vnd.ollama.image.license",
+          "size": 11353
+        },
+        {
+          "digest": "sha256:d8ba2f9a17b3bbdeb5690efaa409b3fcb0b56296a777c7a69c78aa33bbddf182",
+          "from": "dhiltgen/gpt-oss:20b-llamacpp",
+          "mediaType": "application/vnd.ollama.image.params",
+          "size": 18
+        }
+      ],
+      "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+      "runner": "llamacpp",
+      "schemaVersion": 2
+    },
+    "quantization": "MXFP4",
+    "blobs": [
+      {
+        "digest": "sha256:e103573196b6deeff79ec124b4131b4fad700cee60b584a8f9d689ffed115038",
+        "size_bytes": 139,
+        "url": "https://registry.ollama.ai/v2/library/gpt-oss/blobs/sha256:e103573196b6deeff79ec124b4131b4fad700cee60b584a8f9d689ffed115038"
+      },
+      {
+        "digest": "sha256:8ecb5d4ad6172c63f9cbf1a07a04e525985a8a11a6e516da02b674c4010de716",
+        "size_bytes": 13793422816,
+        "url": "https://registry.ollama.ai/v2/library/gpt-oss/blobs/sha256:8ecb5d4ad6172c63f9cbf1a07a04e525985a8a11a6e516da02b674c4010de716"
+      },
+      {
+        "digest": "sha256:fa6710a93d78da62641e192361344be7a8c0a1c3737f139cf89f20ce1626b99c",
+        "size_bytes": 7240,
+        "url": "https://registry.ollama.ai/v2/library/gpt-oss/blobs/sha256:fa6710a93d78da62641e192361344be7a8c0a1c3737f139cf89f20ce1626b99c"
+      },
+      {
+        "digest": "sha256:f60356777647e927149cbd4c0ec1314a90caba9400ad205ddc4ce47ed001c2d6",
+        "size_bytes": 11353,
+        "url": "https://registry.ollama.ai/v2/library/gpt-oss/blobs/sha256:f60356777647e927149cbd4c0ec1314a90caba9400ad205ddc4ce47ed001c2d6"
+      },
+      {
+        "digest": "sha256:d8ba2f9a17b3bbdeb5690efaa409b3fcb0b56296a777c7a69c78aa33bbddf182",
+        "size_bytes": 18,
+        "url": "https://registry.ollama.ai/v2/library/gpt-oss/blobs/sha256:d8ba2f9a17b3bbdeb5690efaa409b3fcb0b56296a777c7a69c78aa33bbddf182"
+      }
+    ]
+  },
+  "workload": {
+    "prompt": "Explain how a CPU executes a program. Describe instruction fetching, decoding, execution, registers, and memory access in clear English. Write a detailed explanation of approximately 200 words.",
+    "context_length": 2048,
+    "max_output_tokens": 128,
+    "seed": 42,
+    "temperature": 0,
+    "batch_size": 128,
+    "think": "low",
+    "template_date": "2026-10-17"
+  },
+  "measurement": {
+    "protocol": "fresh_request_preloaded/v1",
+    "repetitions": 1,
+    "concurrency": 1,
+    "warmup_requests": 0,
+    "perf_events": [
+      "cpu-clock",
+      "context-switches",
+      "cpu-migrations",
+      "page-faults",
+      "cycles",
+      "instructions",
+      "branches",
+      "branch-misses",
+      "cache-references",
+      "cache-misses"
+    ]
+  },
+  "resources": {
+    "minimum_available_memory_bytes": 19327352832
+  },
+  "timeouts": {
+    "preparation_seconds": 3600,
+    "repetition_seconds": 3600,
+    "cleanup_seconds": 60
+  }
+}
