@@ -66,3 +66,5 @@ Template の null は未束縛を表し、結果データの unavailable と混�
 ## 現行固定 instance
 
 再生成の正本は `specs/runners/*.json`。この具体化済みファイルを `runners/` に配置し、値を再選定しない。旧flatからの写像は過去データの互換説明であり、現行Runnerを二重に生成しない。`workload.template_date` の意味と検証は [ollama-adapter.md](ollama-adapter.md) に従う。summary 3.1.0以降は現行instanceを保存する。
+
+対象モデルの一覧・既定選択・追加手順は [model-catalog.md](model-catalog.md) に従う。モデルを追加しても、この契約と Template の測定境界を変更しない。

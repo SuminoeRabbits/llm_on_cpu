@@ -1,0 +1,30 @@
+{
+  "format_version": 1,
+  "files": {
+    "Requirments.md": "4126fc736f067ed2f17fabc461267f27fa6acf36a8fb20eceec4042baa1bb780",
+    "specs/README.md": "57f3db995c19943c7560f20511e93bc2321bd29eaa5b399070d31f843447f1ac",
+    "specs/bootstrap/.dockerignore": "fd6c95089c21248cc6522cd53b9ab1f2fe065ee75378fbcda0f59ce0eb8e69f4",
+    "specs/bootstrap/.gitignore": "61ae5ff5e95c9d7b047757e2131bee52b2bc0b868d75ecfc417dad8fb44741da",
+    "specs/bootstrap/docker/Dockerfile": "b33669494e0f9610acaf45b1333ec9bbf9df310178449467a2005785d66ab9ec",
+    "specs/bootstrap/requirements.lock": "48ac5a8c75f36c9cfb79d734f5e2d68558b10d6da8a1bef3e8ce3bf7f069b781",
+    "specs/check_inputs.py": "2f4fa5d5f802250430cf8e77a6ced3e2339dc28773d9a1e37b515c8aad382878",
+    "specs/compat/ollama-runner.schema.json": "4ceb9600187a4c5e67c4620285eee3324c35192a2195e7073cd55b911ddd9896",
+    "specs/compat/runner-1.0.schema.json": "a9bac77d45183a59c52edbd95edba207971c292a19b6bc546ce11ce31ab156cb",
+    "specs/compat/summary-1.0.schema.json": "6209a05ad68505fdb2c85517e08c1b2c5b0128dd16c84fa5adbb69062a723cbd",
+    "specs/compat/summary-2.0.schema.json": "a28854ce39646390dbaef9a39fb05a95cbc89ce24907b9d412162f7c83ef40ec",
+    "specs/compat/summary-3.0.schema.json": "fc678502a084fb438d5fac4f740b31278eb634b35710cba061a7f4759e3534c1",
+    "specs/compat/summary-3.1.schema.json": "8279e5114d477b94d6a5b06a04f4b283f88ac7db021a6b4393ebb730240f7665",
+    "specs/measurement-protocol.md": "67a9354921d7e0f30a2e96a01fabdb22977e0bf39afb2c1f8a78c43cb13eaad3",
+    "specs/model-catalog.md": "648f35b022a29669ca36de11ebc0e2ac24b05b7bf4d4c4f5e4a51747d63f6199",
+    "specs/ollama-adapter.md": "cbcb1b7ba64a85b5e5c6f6182ed964d70fb65989fd649b79153802580abfdf0c",
+    "specs/runner-contract.md": "d24552cf3d93515614e212217a14dc6d9c7c502eaf98c50581e50103281ea64c",
+    "specs/runner.schema.json": "bae68a3d1d9b41349e37195ea615683e631d215e4989788a1b493eb119e17b27",
+    "specs/runner.template.json": "29a5c49c34ededea55b0a83f47f02e03370c2218b4a3db1fa9a22f1a9bcc3c7e",
+    "specs/runners/ollama-gpt-oss-20b.json": "4ea86f1ce3e60322742b5297e13091dc4414491ebf83c7e0849b482ab2202d41",
+    "specs/runners/ollama-qwen3-30b-a3b.json": "03c5c6bf6355fbedb6d976defcd3a55ea1bcd7ef7e067d67a7c23990fdcfd593",
+    "specs/runners/ollama-qwen3-smoke.json": "4d145f86a0ca4ef2c9b351e8ac7761779cc076c7aee260b7d1e6ea2f15a12ed5",
+    "specs/runners/ollama-qwen3-stability.json": "f1ff023bca2050e48c9221eb089d5c05b73d7d0cb2cda40ab6d8e6d9e8996f71",
+    "specs/summary-format.md": "3ed610c9950798d2717a7722dbaac906cf7126e9beb3877702c39c38521af3c2",
+    "specs/summary.schema.json": "61646de922f8b2c4f9d0f33ba06fc338d5fd7dcfaa02bab2de51a017b738da38"
+  }
+}

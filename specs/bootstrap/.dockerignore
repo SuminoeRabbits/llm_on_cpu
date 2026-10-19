@@ -1,0 +1,6 @@
+**
+!docker/
+!docker/Dockerfile
+!.cache/
+!.cache/ollama/
+!.cache/ollama/**

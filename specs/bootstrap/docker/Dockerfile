@@ -1,0 +1,7 @@
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
+COPY .cache/ollama/bin/ /usr/bin/
+COPY .cache/ollama/lib/ /usr/lib/
+ENV OLLAMA_HOST=0.0.0.0:11434 OLLAMA_MODELS=/models OLLAMA_NUM_PARALLEL=1 OLLAMA_MAX_LOADED_MODELS=1 OLLAMA_NO_CLOUD=1
+EXPOSE 11434
+ENTRYPOINT ["/usr/bin/ollama", "serve"]
